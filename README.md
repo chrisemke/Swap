@@ -74,15 +74,17 @@ Swap pode ser uma partição no disco ou um arquivo (swap file)
   Para uma descrição mais detalhada e técnica do que o Linux conta como "disponível", consulte o [commit](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=34e431b0ae398fc54ea69ff85ec700722c9da773) que adicionou o campo.
 
 ## Quando devo começar a me preocupar?
-  Um sistema Linux saudável com memória mais do que suficiente irá, depois de funcionar por um tempo, mostrará o seguinte comportamento esperado e inofensivo:
-    * free: a memória está perto de 0;
-    * used: a memória está perto de total;
-    * avaliable: memória tem espaço suficiente (digamos, 20%+ do total);
-    * swap used: não muda.
-  Sinais alerta de uma situação genuína de baixa memória que você pode querer examinar:
-    * avaliable: memória está perto de zero;
-    * swap used: aumenta ou flutua;
-    * dmesg | grep oom-killer: mostra o OutOfMemory-killer em ação
+
+### Um sistema Linux saudável com memória mais do que suficiente irá, depois de funcionar por um tempo, mostrará o seguinte comportamento esperado e inofensivo:
+  * free: a memória está perto de 0;
+  * used: a memória está perto de total;
+  * avaliable: memória tem espaço suficiente (digamos, 20%+ do total);
+  * swap used: não muda.
+
+### Sinais alerta de uma situação genuína de baixa memória que você pode querer examinar:
+  * avaliable: memória está perto de zero;
+  * swap used: aumenta ou flutua;
+  * dmesg | grep oom-killer: mostra o OutOfMemory-killer em ação
 
 ## Como posso verificar essas coisas?
   Consulte esta [página](https://www.linuxatemyram.com/play.html) para obter mais detalhes e como você pode experimentar o cache de disco para mostrar os efeitos descritos aqui. Poucas coisas o fazem apreciar mais o cache de disco do que medir uma aceleração da ordem de magnitude em seu próprio hardware!
