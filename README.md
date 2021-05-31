@@ -1,7 +1,12 @@
 # Swap
 
 ## O que é swap?
+Swap é uma área de troca (memória virtual) e funciona como uma extensão da memória RAM, mas fica armazenada no disco. Pode ser considerada como uma memória de fuga, pois quando esgotar os recursos de memória RAM no sistema o swap será usado para aliviar a carga e não travar o sistema. 
 Swap pode ser uma partição no disco ou um arquivo (swap file)
+
+Importante: lembre-se que o swap é bem mais lento que a memória RAM. Se você fizer muito swap em um sistema você vai lidar com uma grande de uma lentidão! 
+Mesmo em casos onde o swap é feito em um SSD
+
 
 ## Quando a swap é usada?
   Quando a memória ram enche;
