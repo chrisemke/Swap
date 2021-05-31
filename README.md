@@ -33,17 +33,33 @@ Swap pode ser uma partição no disco ou um arquivo (swap file)
   Se, no entanto, você precisar limpar um pouco de RAM rapidamente para contornar outro problema, como um mau comportamento de VM, você pode forçar o linux a não destrutiva eliminar caches de forma usando "echo 3 | sudo tee /proc/sys/vm/drop_caches".
 
 ## Por que top e free dizem que todo o meu ram é usado se não é?
-  Esta é apenas uma diferença de terminologia. Você e o Linux concordam que a memória ocupada pelos aplicativos é "usada", enquanto a memória que não é usada para nada é "livre".
+  Esta é apenas uma diferença de terminologia. Você e o Linux concordam que a memória ocupada pelos aplicativos é "usada", enquanto a memória que não é usada para nada é   "livre".
   ### Mas como você conta a memória que é usada atualmente para algo, mas ainda pode ser disponibilizada para aplicativos?
-    Você pode contar essa memória como "livre" e / ou "disponível". Em vez disso, o Linux o conta como "usado", mas também "disponível":
-    .__________________________________________________________.
-    | Memória que é         | Você chamaria | Linux chama isso |
-    |_usada_por_aplicativos_|_____Usada_____|_______Usada______|
-    | usada, mas pode_ser   | Livre (ou     |   Livre (e       |
-    |___disponibilizada_____|___disponível)_|____disponível)___|
-    |_não_é_usada_para_nada_|_____Livre_____|______Livre_______|
+   Você pode contar essa memória como "livre" e / ou "disponível". Em vez disso, o Linux o conta como "usado", mas também "disponível":
+    <table style="width:100%">
+      <tr>
+        <th>Memória que é</th>
+        <th>Você chamaria</th> 
+        <th>Linux chama isso</th>
+      </tr>
+      <tr>
+        <td>usada por aplicativos</td>
+        <td>Usada</td>
+        <td>Usada</td>
+      </tr>
+      <tr>
+        <td>usada, mas pode ser disponibilizada</td>
+        <td>Livre (ou disponível)</td>
+        <td>Livre (e disponível)</td>
+      </tr>
+      <tr>
+        <td>não é usada para nada</td>
+        <td>Livre</td>
+        <td>Livre</td>
+      </tr>
+    </table>
 
-    Esse "algo" é (aproximadamente) o que o top e o free chamam de "buffers" e "cached". Como a terminologia sua e a do Linux são diferentes, você pode pensar que está com pouca memória RAM quando não está.
+   Esse "algo" é (aproximadamente) o que o top e o free chamam de "buffers" e "cached". Como a terminologia sua e a do Linux são diferentes, você pode pensar que está com pouca memória RAM quando não está.
 
 ## Como posso ver a quantidade de RAM livre que realmente tenho?
   Para ver quanta RAM seus aplicativos podem usar sem trocar, execute free -me olhe para a coluna "available":
@@ -52,7 +68,7 @@ Swap pode ser uma partição no disco ou um arquivo (swap file)
                   total        used        free      shared  buff/cache   available
     Mem:           1504        1491          13           0         855      792
     Swap:          2047           6        2041
-    ```
+  ```
 
   Esta é a sua resposta no MiB. Se você ingenuamente olhar para "usado" e "livre", você pensará que sua RAM está 99% cheio, quando na verdade está apenas 47%!
   Para uma descrição mais detalhada e técnica do que o Linux conta como "disponível", consulte o [commit](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=34e431b0ae398fc54ea69ff85ec700722c9da773) que adicionou o campo.
